@@ -1,4 +1,4 @@
-# Target-MyRetail RESTful Service - Case Study
+# Target - MyRetail RESTful Service - Case Study
 
 myRetail is a rapidly growing company with HQ in Richmond, VA and over 200 stores across the east coast. myRetail wants to make its internal data available to any number of client devices, from myRetail.com to native mobile apps.
 
@@ -15,10 +15,52 @@ Reads pricing information from a NoSQL data store and combines it with the produ
 BONUS: Accepts an HTTP PUT request at the same path (/products/{id}), containing a JSON request body similar to the GET response, and updates the product’s price in the data store.
 
 # Solution
-Technologies used:
-- Java 8
-- Spring Boot 
-- Maven
-- MongoDB
-- Mockito / Junit
-- Postman
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+
+## General info
+Myretail application is designed to get the product information such as productId, product name and product price details for the given product id and also to update the product price for the given productId to save it in the database.
+
+Business Logic : This application is responsible for retrieving product details such as product name from the source(external API) and product price details from the NoSQL database based on the productId.
+
+Source: http://redsky.target.com/v2/pdp/tcin/13860428?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics
+	
+## Technologies
+Technology Stack of this project include the following :
+* Java 8
+* Spring Boot
+* Maven
+* Mongo DB
+* Mockito / Junit
+* Postman
+
+## Setup
+
+1. Install MongoDB on your local machine and start the Mongo server.
+- MongoDB connection configurations for this project are given as below: (all the configurations are mentioned in application.properties file)
+  ```
+  Host : localhost
+  port : 27017
+  Database : myretail
+  Collection : products
+  ```
+2. Check out the code from GitHub by downloading the project as zip file or clone it using eclipse.
+- Application can be run either from IDE(say Eclipse) or from the command line.
+  - If using IDE, run the MyretailApplication.java file where main method of the application resides.
+  - If command line, using maven exceute `mvn spring-boot:run` command.
+  - Server will start on `port 8080` 
+  
+### API Documentation
+Below mentioned are the end points in this application.
+
+```
+Method      Request EndPoint       Input              DESCRIPTION
+GET         /products/{id}          N/A              To get product details for the given productId
+PUT         /products/{id}         Product           To update the product price for the given productId
+```
+
+
+
+
